@@ -15,12 +15,16 @@ class Post
     }
     public function insertPost($data)
     {   
-        echo "chegou";
-        $json = json_decode($data['data']);
-        $con     = $this->db->OpenCon();
-        $mac   = $con->real_escape_string($json->{'mac'});
+	echo $data;
+        $json = json_decode($data);
+	var_dump($json);
+        $con = $this->db->OpenCon();
+        $mac = $con->real_escape_string($json->{'mac'});
+	var_dump $mac;
         $status = $json->{'status'};
+	echo $status;
         $error     = $json->{'error'};
+	echo $error;
         $query   = $con->prepare("INSERT INTO _log(mac, status, error) VALUES(?, ?, ?)");
         $query->bind_param("sii", $mac, $status, $error);
         $result = $query->execute();

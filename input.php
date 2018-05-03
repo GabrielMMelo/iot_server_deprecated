@@ -2,12 +2,16 @@
 
 include "post.php";
 
-if(isset($_GET['data'])){
-	$data = $_GET['data'];	
+if(isset($_POST['data'])){
+	$data = $_POST['data'];
 	echo $data;
 }
-insertPost($data);
-if(insertPost($data)){
+
+echo "oi";
+
+$post = new Post();
+
+if($post->insertPost($data)){
 	echo "inserção deu ruim";
 }
 else{
