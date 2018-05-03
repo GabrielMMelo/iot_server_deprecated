@@ -12,14 +12,23 @@
 <body>
 
 <?php 
-	$result = getData();
-	var_dump($result);
+	$get = new Get();
+	$result = $get->getData();
+	$line = mysqli_fetch_assoc($result);
+	$total = mysqli_num_rows($result);
+	while($total >= 1) {
 ?>
 
 <h1>
-	<?php
-	?>
+	<?php echo $line['mac'];?>
 </h1>
+
+<?php
+
+		$total -= 1;
+		$line = mysqli_fetch_assoc($result);
+	}
+?>
 
 </body>
 </html>

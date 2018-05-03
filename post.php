@@ -2,33 +2,30 @@
 
 include "db.php";
 
-class Post
-{
+class Post {
 
     protected $db = null;
 
-    public function __construct()
-    {
+    public function __construct() {
 
         $this->db = new db();
 
     }
-    public function insertPost($data)
-    {   
-	echo $data;
+    public function insertPost($data) {
+//	echo $data;
         $json = json_decode($data);
-	var_dump($json);
+//	var_dump($json);
         $con = $this->db->OpenCon();
-	var_dump($con);
-        $mac = $con->real_escape_string($json->{'mac'});
-	echo $mac;
-        $status = $json->{'status'};
-	echo $status;
-        $error     = $json->{'error'};
-	echo $error;
-        $query   = $con->prepare("INSERT INTO _log(mac, status, error) VALUES(?, ?, ?)");
+        $mac = $json->{'mac'};
+//	echo $json->{'mac'};
+        $status = (int)$json->{'status'};
+        $error  = (int)$json->{'error'};
+        $query = $con->prepare("INSERT INTO _log(mac, status, error) VALUES(?, ?, ?)");
+//	var_dump($query);
         $query->bind_param("sii", $mac, $status, $error);
         $result = $query->execute();
+//	echo "RESULLLLLLLLLLLT: ";
+//	var_dump($result);
         if (!$result) {
 
             $error = $con->error;
@@ -36,14 +33,14 @@ class Post
             $this->db->CloseCon();
             return $error;
         }
+//	echo "resultaaaaaaaaaaaaaaaaduuuu";
         $result = true;
         return $result;
     }
 
     
 
-    public function deletearticle($id)
-    {
+    public function deletearticle($id) {
 
         $con    = $this->db->OpenCon();
         $sql    = "DELETE FROM post WHERE article_id = '$id'";

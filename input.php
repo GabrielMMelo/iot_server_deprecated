@@ -1,19 +1,16 @@
 <?php
 
-include "post.php";
+	include "post.php";
 
-if(isset($_POST['data'])){
-	$data = $_POST['data'];
-	echo $data;
-}
+	$data = file_get_contents('php://input');
 
-$post = new Post();
+	$post = new Post();
 
-if($post->insertPost($data)){
-	echo "inserção deu ruim";
-}
-else{
-	echo "inserção deu bom";
-}
+	if($post->insertPost($data)) {
+	;
+	}
+	else {
+		echo "ERROR: INSERT FAILED";
+	}
 
 ?>
