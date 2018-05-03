@@ -19,8 +19,9 @@ class Post
         $json = json_decode($data);
 	var_dump($json);
         $con = $this->db->OpenCon();
+	var_dump($con);
         $mac = $con->real_escape_string($json->{'mac'});
-	var_dump $mac;
+	echo $mac;
         $status = $json->{'status'};
 	echo $status;
         $error     = $json->{'error'};

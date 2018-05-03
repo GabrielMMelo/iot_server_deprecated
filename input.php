@@ -7,8 +7,6 @@ if(isset($_POST['data'])){
 	echo $data;
 }
 
-echo "oi";
-
 $post = new Post();
 
 if($post->insertPost($data)){
