@@ -1,9 +1,10 @@
-class DbConnection
+<?php 
+class db
 {
     protected $conn = null;
     public function OpenCon()
     {
-        $this->conn = new mysqli("localhost:3306", "root", "vasco2202", "universidademais") or die($conn->connect_error);
+        $this->conn = new mysqli("localhost:3306", "root", "emakersjr", "iot_server") or die($conn->connect_error);
         return $this->conn;
     }
     public function CloseCon()
@@ -11,3 +12,4 @@ class DbConnection
         $this->conn->close();
     }
 }
+?>

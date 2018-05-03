@@ -1,5 +1,6 @@
 <?php
-include "DbConnection.php";
+
+include "db.php";
 
 class Post
 {
@@ -9,18 +10,18 @@ class Post
     public function __construct()
     {
 
-        $this->db = new DbConnection();
+        $this->db = new db();
 
     }
-    public function insertpost($a_name, $a_content, $imgname)
+    public function insertPost($data)
     {
-
+        $json = json_decode($data['data']);
         $con     = $this->db->OpenCon();
-        $title   = $con->real_escape_string($a_name);
-        $content = $con->real_escape_string($a_content);
-        $img     = $con->real_escape_string($imgname);
-        $query   = $con->prepare("INSERT INTO post(article_name, article_content, img) VALUES(?, ?, ?)");
-        $query->bind_param("sss", $title, $content, $img);
+        $mac   = $con->real_escape_string($json->{'mac'});
+        $status = $json->{'status'};
+        $error     = $json->{'error'};
+        $query   = $con->prepare("INSERT INTO _log(mac, status, error) VALUES(?, ?, ?)");
+        $query->bind_param("sii", $mac, $status, $error);
         $result = $query->execute();
         if (!$result) {
 
@@ -33,25 +34,7 @@ class Post
         return $result;
     }
 
-    public function getarticle($articleid)
-    {
-        $con = $this->db->OpenCon();
-
-        $stmt = "SELECT article_name,article_content,img,date from post WHERE article_id = '$articleid'";
-
-        $result = $con->query($stmt);
-
-        if ($result->num_rows == 1) {
-            $sql = $result;
-        } else {
-            $sql = "No article";
-        }
-
-        $this->db->CloseCon();
-
-        return $sql;
-
-    }
+    
 
     public function deletearticle($id)
     {

@@ -18,7 +18,7 @@
 #include "eddl.h"
 
 WiFiClient client;
-IPAddress server(192,168,0,101);
+IPAddress server(192,168,0,106);
 const int http_port = 80;
 
 unsigned long _initialTime;
@@ -67,9 +67,10 @@ void interrupt() {
     String buf;
     StaticJsonBuffer<500> jsonBuffer;
     JsonObject& root = jsonBuffer.createObject();
-    root["time"] = String(millis());
-    root["isConnected"] = 0;
-    root["id"] = id;
+    //root["time"] = String(millis());
+    root["mac"] = WiFi.macAddress();
+    root["status"] = 0;
+    root["erro"] = 0;
     root.printTo(buf);
     //_DEBUG(buf);
     File rFile = SPIFFS.open("/log.dat","a+");
@@ -79,7 +80,6 @@ void interrupt() {
       rFile.println(buf);
     }
     rFile.close();
-    //_scanWifi(); // Find a open access point
   }
 }
 
