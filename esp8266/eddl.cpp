@@ -63,9 +63,10 @@ String _sendToServer(unsigned long _baseMillis, unsigned long _initialTime) {
   StaticJsonBuffer<500> jsonBuffer;
   JsonObject& root = jsonBuffer.createObject();
   
-  root["time"] = hoursStr + ":" + minuteStr + ":" + secondStr ;
-  root["isConnected"] = 1;
-  root["id"] = id;
+  //root["time"] = hoursStr + ":" + minuteStr + ":" + secondStr ;
+//  root["mac"] = WiFi.macAddress();
+  root["status"] = 0;
+  root["erro"] = 0;
   
   root.printTo(buf);
   //_DEBUG(buf);

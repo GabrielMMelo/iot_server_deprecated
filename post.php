@@ -14,7 +14,8 @@ class Post
 
     }
     public function insertPost($data)
-    {
+    {   
+        echo "chegou";
         $json = json_decode($data['data']);
         $con     = $this->db->OpenCon();
         $mac   = $con->real_escape_string($json->{'mac'});

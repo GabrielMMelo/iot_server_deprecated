@@ -61,38 +61,38 @@ void setup() {
 
 void interrupt() {
   _DEBUG("INTERRUPT");
-  if (WiFi.status() == WL_CONNECTED)
+  /*if (WiFi.status() == WL_CONNECTED)
     json = _sendToServer(_baseMillis, _initialTime);
-  else {
-    String buf;
+  else {*/
     StaticJsonBuffer<500> jsonBuffer;
     JsonObject& root = jsonBuffer.createObject();
     //root["time"] = String(millis());
     root["mac"] = WiFi.macAddress();
     root["status"] = 0;
     root["erro"] = 0;
-    root.printTo(buf);
-    //_DEBUG(buf);
-    File rFile = SPIFFS.open("/log.dat","a+");
+    root.printTo(json);
+    _DEBUG(json);
+    /*File rFile = SPIFFS.open("/log.dat","a+");
     if(!rFile){
       _DEBUG(F("Error! Failed to open file!"));
     } else {
       rFile.println(buf);
     }
-    rFile.close();
+    rFile.close();*/
   }
-}
 
 void loop() {
-  if(json != "0"){
+
+    if(json != "0"){
     if ( !client.connect(server, http_port) ){
       _DEBUG("Error to connect to server");
       return;
     }
 
+    
     _DEBUG("Enviando...");
     
-    String url = "GET /eddl/input.php?data=" + json + " HTTP/1.1";
+    String url = "GET /iot_server/input.php?data=" + json + " HTTP/1.1";
     client.println(url);
     client.println("Host: 192.168.0.106");
     client.println("Connection: close");
@@ -108,7 +108,7 @@ void loop() {
     */ 
        
     json = "0";
-    _readLog();
+    //_readLog();
   }
 }
 
