@@ -20,12 +20,14 @@ class Post {
 //	echo $json->{'mac'};
         $status = (int)$json->{'status'};
         $error  = (int)$json->{'error'};
-        $query = $con->prepare("INSERT INTO _log(mac, status, error) VALUES(?, ?, ?)");
+	$time = (string) date('H:i:s');
+	echo $time;
+        $query = $con->prepare("INSERT INTO _log(mac, status, error, time) VALUES(?, ?, ?,?)");
 //	var_dump($query);
-        $query->bind_param("sii", $mac, $status, $error);
+        $query->bind_param("siis", $mac, $status, $error, $time);
         $result = $query->execute();
 //	echo "RESULLLLLLLLLLLT: ";
-//	var_dump($result);
+	var_dump($result);
         if (!$result) {
 
             $error = $con->error;
