@@ -9,7 +9,9 @@ console.log("count" + count);
 redis.on('message', function(channel, message) {
     console.log('Message Recieved: ' + message);
     message = JSON.parse(message);
-    io.emit(channel + ':' + message.event, message.data);
+   // io.emit(channel + ':' + message.event, message.data);
+    io.emit('teste', message.data);
+    console.log(channel + ':' + message.event);
 });
 http.listen(3000, function(){
     console.log('Listening on Port 3000');
