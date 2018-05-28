@@ -4,30 +4,37 @@
 #include <ESP8266WiFiMulti.h>
 
 #include <SocketIoClient.h>
+#include <ArduinoJson.h>
 
-#define USE_SERIAL Serial
+#define DEBUG Serial
+
+#define B1 5
 
 ESP8266WiFiMulti WiFiMulti;
-SocketIoClient webSocket;
+SocketIoClient webSocket; 
 
-void event(const char * payload, size_t length) {
-  USE_SERIAL.printf("got message: %s\n", payload);
-  USE_SERIAL.println("oi");
+void event(const char * payload, size_t length) { 
+
+  DEBUG.println(payload);
+  digitalWrite(B1, !digitalRead(B1));
   
 }
 
 void setup() {
-    USE_SERIAL.begin(115200);
+    pinMode(B1, OUTPUT);
+    digitalWrite(B1, LOW);
+    
+    DEBUG.begin(115200);
 
-    USE_SERIAL.setDebugOutput(true);
+    DEBUG.setDebugOutput(true);
 
-    USE_SERIAL.println();
-    USE_SERIAL.println();
-    USE_SERIAL.println();
+    DEBUG.println();
+    DEBUG.println();
+    DEBUG.println();
 
       for(uint8_t t = 4; t > 0; t--) {
-          USE_SERIAL.printf("[SETUP] BOOT WAIT %d...\n", t);
-          USE_SERIAL.flush();
+          DEBUG.printf("[SETUP] BOOT WAIT %d...\n", t);
+          DEBUG.flush();
           delay(1000);
       }
 
@@ -37,10 +44,8 @@ void setup() {
         delay(100);
     }
 
-    webSocket.on("teste", event);
+    webSocket.on("button-channel:App\\\\Events\\\\Button", event);
     webSocket.begin("192.168.0.109", 3000, "/socket.io/?transport=websocket");
-    //webSocket.begin("192.168.0.109", 3000, "/socket.io/");
-    //message
 }
 
 void loop() {
