@@ -1,4 +1,5 @@
 - Script para rodar o servidor do socket.io
 - Melhorar interface
-- Login com auth
+- Login com auth OK
 - Ao logar, disparar um evento para enviar mensagem para os clientes para os mesmos enviarem seus status
+- Arrumar navbar do master.blade.php para pegar user->name e fazer dropdown com logout
