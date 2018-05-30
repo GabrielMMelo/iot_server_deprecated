@@ -4,21 +4,19 @@ use App\Events\Event;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Queue\SerializesModels;
 
-class Button implements ShouldBroadcast
-{
+class Button implements ShouldBroadcast{
     use SerializesModels;
 
     public $data;
 
-    public function __construct($id)
-    {
+    public function __construct($id, $value){
         $this->data = array(
-	    'id' => $id
+	    'id' => $id, 
+        'value' => $value
         );
     }
 
-    public function broadcastOn()
-    {
+    public function broadcastOn(){
         return ['button-channel'];
     }
 }

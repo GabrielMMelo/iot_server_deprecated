@@ -1,3 +1,4 @@
 - Script para rodar o servidor do socket.io
 - Melhorar interface
 - Login com auth
+- Ao logar, disparar um evento para enviar mensagem para os clientes para os mesmos enviarem seus status

@@ -24,7 +24,12 @@ Route::get('/{id}',['middleware' => 'cors', function ($id) {
 }])->where('id', '[0-9]{1,2}');
 
 
-Route::post('/store','buttonController@store')->name('button.store');
 
 
-Route::get('/dashboard','buttonController@view')->name('button.view');
+Route::group(['prefix' => '/dashboard'], function() {
+
+	Route::get('/','buttonController@view')->name('button.view');
+
+	Route::post('/store','buttonController@store')->name('button.store');
+});
+

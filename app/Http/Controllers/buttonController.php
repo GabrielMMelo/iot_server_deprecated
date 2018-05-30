@@ -12,8 +12,7 @@ class buttonController extends Controller
     }
 
     public function store(Request $request){
-    	event(new Button($request->input('id')));
+    	event(new Button($request->input('id'), $request->input('value')));
     	return redirect()->back();
-    	//return "oi";
     }
 }
