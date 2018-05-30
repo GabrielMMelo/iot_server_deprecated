@@ -9,10 +9,11 @@ class Button implements ShouldBroadcast{
 
     public $data;
 
-    public function __construct($id, $value){
+    public function __construct($id, $value, $value_2){
         $this->data = array(
 	    'id' => $id, 
-        'value' => $value
+        'value' => $value,
+        'value_2' =>$value_2
         );
     }
 
