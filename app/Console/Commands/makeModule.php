@@ -23,7 +23,7 @@ class makeModule extends Command
      *
      * @var string
      */
-    protected $signature = 'make:module {type : Type of module} {id : ID of esp8266}';
+    protected $signature = 'make:module {type : Type of module} {id : ID of esp8266} {owner : Module\'s owner}';
 
     /**
      * The console command description.
@@ -71,13 +71,15 @@ class makeModule extends Command
 
         $type = trim($this->argument('type'));
         $id = trim($this->argument('id'));
+        $owner = trim($this->argument('owner'));
 
         if($type == "tv"){
             
             $name = $this->fileName($type);
 
             $this->createView($name, $type);
-            $this->createController($name, $id, $type);
+            $this->insertDB($name, $id, $owner, $type)
+           // $this->createController($name, $id, $type);
         }
 
         else{
@@ -101,7 +103,7 @@ class makeModule extends Command
     }
 
     // Check if already exists a tv module with the given esp8266 id 
-    private function createController($name, $id, $type) {
+    /*private function createController($name, $id, $type) {
 
         if($type == 'tv'){
             //$name = $this->ucName($name);
@@ -115,7 +117,7 @@ class makeModule extends Command
             return true;
         }
     }
-
+    */
 
      /**
      * Build a formated name from a word (first letter to UPPERCASE).
