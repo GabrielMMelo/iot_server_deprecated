@@ -27,7 +27,7 @@
                 
                 <div class="container">
 
-                        <a class="navbar-brand h1 mb-0" href="#"> Home </a>
+                        <a class="navbar-brand h1 mb-0" href="{{ route('dashboard.view') }}"> Home </a>
 
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite,#navbarImg">
 

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'MODULE_NAME')
+@section('title', 'Tv 1')
 
 @section('link')
     @parent
