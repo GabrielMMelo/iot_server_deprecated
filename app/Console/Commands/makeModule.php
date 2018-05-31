@@ -11,6 +11,8 @@
 
 namespace App\Console\Commands;
 
+use App\Tv;
+
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Support\Composer;
@@ -23,7 +25,7 @@ class makeModule extends Command
      *
      * @var string
      */
-    protected $signature = 'make:module {type : Type of module} {id : ID of esp8266} {owner : Module\'s owner}';
+    protected $signature = 'make:module {type : Type of module} {id? : ID of esp8266} {owner? : Module\'s owner}';
 
     /**
      * The console command description.
@@ -56,6 +58,7 @@ class makeModule extends Command
         $this->files = $files;
         $this->composer = $composer;
         $this->type = '';
+        $this->count = 1;
 
     }
 
@@ -64,25 +67,29 @@ class makeModule extends Command
      *
      * @return mixed
      */
-    public function handle()
-    {   
+    public function handle() {   
 
-        // uma view, um controller, add to dashboard, add to route(?)
+        $this->type = trim($this->argument('type'));
+        
 
-        $type = trim($this->argument('type'));
-        $id = trim($this->argument('id'));
-        $owner = trim($this->argument('owner'));
-
-        if($type == "tv"){
+        if($this->type == "tv") {
+            $id = trim($this->argument('id'));
+            $owner = trim($this->argument('owner'));
             
-            $name = $this->fileName($type);
+            $name = $this->fileName($this->type);
 
-            $this->createView($name, $type);
-            $this->insertDB($name, $id, $owner, $type)
+            $this->createView($name);
+            $this->insertDB($id, $owner);
            // $this->createController($name, $id, $type);
         }
 
-        else{
+        else if($this->type == "delete"){
+
+            $this->deleteDB();
+
+        }
+
+        else {
             $this->error(' Undefinied entry type! ');
         }
        
@@ -90,8 +97,8 @@ class makeModule extends Command
 
     }
 
-    private function createView($name, $type) {
-        if($type == 'tv'){
+    private function createView($name) {
+        if($this->type == 'tv'){
             //$name = $this->ucName($name);
             $stub = $this->files->get(base_path('/resources/stubs/module_tv_view.stub'));
             $stub = str_replace('MODULE_NAME', $this->formatName($name), $stub);
@@ -100,6 +107,25 @@ class makeModule extends Command
             $this->info('Created view ' . $filename);
             return true;
         }
+    }
+
+    private function insertDB($id, $owner){
+        if($this->type == 'tv'){
+            $tv = new Tv;
+            $tv->count = $this->count;
+            $tv->id_esp = $id;
+            $tv->owner = $owner;
+            $tv->save();
+        }
+    }
+
+    // Implement to destroy all modules, not only tvs
+    private function deleteDB(){
+        for ($i=1; $i < count(Tv::all()) + 1 ; $i++) { 
+            $this->files->delete(base_path('resources/views/tv_'.$i.'.blade.php'));
+            $this->info('Deleted view tv_'.$i.'.blade.php');
+        }
+        Tv::where('count','>',0)->delete();
     }
 
     // Check if already exists a tv module with the given esp8266 id 
@@ -148,12 +174,13 @@ class makeModule extends Command
      * @return string
      */
     private function fileName($name) {
-
+        
         for ($i=1; $i < 100 ; $i++) { 
         
             if (!view()->exists($name.'_'.$i)) {
         
                 $name = $name.'_'.$i;
+                $this->count = $i;
                 break;
             }
         }

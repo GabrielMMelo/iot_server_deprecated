@@ -3,17 +3,21 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<div class="row justify-content-center" style="font-size: 2rem;">
-	<div class="col-lg-4 col-md-6 col-sm-12">		
-		<div class="card mt-5">
-		  <div class="card-body">
-		    <h5 class="card-title">Controle Remoto</h5>
-		    <a href="{{ route('tv.view') }}" class="btn btn-success">Acessar</a>
-		  </div>
-		</div>
-	</div>
-</div>
-
+    <div class="card mt-3">
+        <span class="display-4">TVs</span>
+        <div class="row justify-content-center" style="font-size: 2rem;">
+        @foreach ($tvs as $tv)
+        	<div class="col-lg-4 col-md-6 col-sm-12 mb-3">		
+        		<div class="card mt-5">
+        		  <div class="card-body">
+        		    <h5 class="card-title">TV {{ $tv->owner }}</h5>
+        		    <a href="{{ route('tv.view', ['count' => $tv->count, 'id' => $tv->id_esp]) }}" class="btn btn-success">Acessar</a>
+        		  </div>
+        		</div>
+        	</div>
+        @endforeach
+        </div>
+    </div>
 
 @endsection
 
