@@ -4,9 +4,59 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "53c5eb56e84020730a313fbf1daed610",
-    "content-hash": "5455abb4b7f6851729f50ef9a1e17b8d",
+    "hash": "9ecb760f733ea5642031a5cff3e0e8d3",
+    "content-hash": "71251aef858aefb35455338a5e40965d",
     "packages": [
+        {
+            "name": "atehnix/laravel-stubs",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/atehnix/laravel-stubs.git",
+                "reference": "ad6bcd1ca14443524963b8b920a2bd97bf4b95d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/atehnix/laravel-stubs/zipball/ad6bcd1ca14443524963b8b920a2bd97bf4b95d6",
+                "reference": "ad6bcd1ca14443524963b8b920a2bd97bf4b95d6",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.5.15",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ATehnix\\LaravelStubs\\Providers\\ConsoleSupportServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ATehnix\\LaravelStubs\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrey Sosnov",
+                    "email": "atehnix@gmail.com"
+                }
+            ],
+            "description": "Customize laravel make command.",
+            "keywords": [
+                "generator",
+                "laravel",
+                "make",
+                "stub"
+            ],
+            "time": "2018-02-04 21:28:25"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",

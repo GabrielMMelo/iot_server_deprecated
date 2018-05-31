@@ -18,7 +18,7 @@
 
         <!-- Styles -->
         @section('link')
-        <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">
         @show
 
     </head>
@@ -35,7 +35,7 @@
 
                         </button>
 
-                        <div class="collapse navbar-collapse" id="navbarSite">
+                        <div class="collapse navbar-collapse" id="navbarSite" style="font-size: 0.7rem;">
 
                                 <ul class="navbar-nav mr-auto">
                                 @section('nav-items')

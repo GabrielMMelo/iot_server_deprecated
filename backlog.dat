@@ -1,5 +1,10 @@
-- Script para rodar o servidor do socket.io
-- Melhorar interface
 - Login com auth OK
+- Arrumar navbar do master.blade.php para pegar user->name e fazer dropdown com logout OK
+- Melhorar interface
+
+- Script para rodar o servidor do socket.io
 - Ao logar, disparar um evento para enviar mensagem para os clientes para os mesmos enviarem seus status
-- Arrumar navbar do master.blade.php para pegar user->name e fazer dropdown com logout
+- Modelar BD
+- Acrescentar modulo de luz (12V)
+- Include HTTPS
+- artisan custom commands

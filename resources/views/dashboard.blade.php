@@ -3,8 +3,8 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<div class="row">
-	<div class="col-4">		
+<div class="row justify-content-center" style="font-size: 2rem;">
+	<div class="col-lg-4 col-md-6 col-sm-12">		
 		<div class="card mt-5">
 		  <div class="card-body">
 		    <h5 class="card-title">Controle Remoto</h5>

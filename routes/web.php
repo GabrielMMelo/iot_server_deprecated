@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth'], function() {
 
 	Route::group(['prefix' => '/dashboard'], function() {
 
-		Route::get('/tv', 'tvController@view')->name('tv.view');
+		Route::get('/tv', 'tv_1Controller@view')->name('tv.view');
 
 		Route::get('/','dashboardController@view')->name('dashboard.view');
 
