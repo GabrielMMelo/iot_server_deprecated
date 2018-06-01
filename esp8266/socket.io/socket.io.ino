@@ -12,13 +12,29 @@ void event(const char * payload, size_t length) {
   DynamicJsonBuffer jsonBuffer(bufferSize);
   const char* json = payload;
   JsonObject& root = jsonBuffer.parseObject(json);
-  int data0_id = root["data"]["id"]; // 1
+  int data_id = root["data"]["id"]; // 1
   
-  if(data0_id == _ID){
-    digitalWrite(B1, !digitalRead(B1));
-    DEBUG.println(digitalRead(B1));
-    //tv->power();
-    tv->volume(true);
+  if(data_id == _ID){
+    String data_value = root["data"]["value"];
+    
+    if (data_value == "power") tv->power();
+  
+    else if(data_value == "volume"){ 
+        if(root["data"]["value_2"] == "1") tv->volume(true);
+        else tv->volume(false);
+    }
+
+    else if (data_value == "up") tv->up();
+    else if (data_value == "down") tv->down();
+    else if (data_value == "right") tv->right();
+    else if (data_value == "left") tv->left();
+    else if (data_value == "select") tv->select();
+    else if (data_value == "source") tv->source();
+
+    else if(data_value == "channel"){ 
+        if(root["data"]["value_2"] == "1") tv->channel(true);
+        else tv->channel(false);
+    }
     delayMicroseconds(50);
   }
   else{

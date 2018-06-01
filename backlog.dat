@@ -8,6 +8,12 @@
 - Ao logar, disparar um evento para enviar mensagem para os clientes para os mesmos enviarem seus status
 - Acrescentar modulo de luz (12V)
 - Include HTTPS
-- Add tv model to make:module command
+- Add tv model to make:module command (?)
 - redirect to login on logout
 - fix route '/' to login
+- Implements correct deletes (by counter) on make:modules
+- Gravar o id do esp no SPIFFS
+- Dois tipos de boot no esp (fazer leitura de um pino na inicialização)
+	* Um de funcionamento normal
+	* Outro funcionando pequeno webserver para setagem do id & SSID + PWD
+- Keyboard shortcuts to web applications

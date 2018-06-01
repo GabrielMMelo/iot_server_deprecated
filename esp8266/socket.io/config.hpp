@@ -11,3 +11,7 @@
 #define _ID 1
 
 #define DEBUG Serial
+
+#define SSID "Dougras"
+
+#define PWD "eusouodougrasvocenaoehodougras"
