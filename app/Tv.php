@@ -9,6 +9,8 @@ class Tv extends Model
     protected $fillable = [
 	'count',
 	'id_esp',
-	'owner'
+	'owner',
+	'local',
+	'model'
     ];
 }

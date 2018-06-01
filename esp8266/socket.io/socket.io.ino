@@ -40,6 +40,24 @@ void event(const char * payload, size_t length) {
   else{
     DEBUG.println("it's not for me...");
   }
+  sendToServer();
+}
+
+void sendToServer(){
+  const size_t bufferSize = JSON_ARRAY_SIZE(1) + JSON_OBJECT_SIZE(1) + JSON_OBJECT_SIZE(2) + 30;
+  DynamicJsonBuffer jsonBuffer(bufferSize);
+  JsonObject& root = jsonBuffer.createObject();
+  root["id"] = _ID;
+  root["teste"] = digitalRead(B1);
+  
+  HTTPClient http;
+  http.begin("http://192.168.0.109:8000/ic/public/esp/store");
+  //http.addHeader("Content-Type", "application/json");
+  http.addHeader("Content-Type", "text/html");
+  int httpCode = http.POST("{'id':1,'teste':0}");
+  DEBUG.println(httpCode);
+  String payload = http.getString();
+  http.end();
 }
 
 void setup() {

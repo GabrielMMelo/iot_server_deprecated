@@ -12,17 +12,21 @@
 */
 
 Route::get('/',  function() {
-    // this doesn't do anything other than to
-    // tell you to go to /fire
-    //return view('login');
+    return redirect('login');
 });
 
-Route::get('/{id}',['middleware' => 'cors', function ($id) {
+/*Route::get('/{id}',['middleware' => 'cors', function ($id) {
     // this fires the event
     event(new App\Events\Button($id));
     return "event fired";
 }])->where('id', '[0-9]{1,2}');
+*/
 
+Route::group(['prefix' => '/esp'], function() {
+        
+    Route::post('/store', 'espController@store')->name('esp.store');
+
+});
 
 Route::group(['middleware' => 'auth'], function() {
 
@@ -39,4 +43,12 @@ Route::group(['middleware' => 'auth'], function() {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/home', function(){
+
+    return redirect('dashboard');
+
+}); 
+
+//Route::get('/home', 'HomeController@index')->name('home');

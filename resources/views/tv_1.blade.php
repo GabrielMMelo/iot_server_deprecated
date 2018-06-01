@@ -20,6 +20,8 @@
                         <form action="{{ route('button.store') }}" method="POST">
                             {{ csrf_field()  }}
                             <input type="hidden" value="{{ $id }}" name="id">
+                            <input type="hidden" value="{{ $model }}" name="model">
+                            <input type="hidden" value="tv" name="type">
                             <input type="hidden" value="source" name="value">
                             <button  type="submit" class="btn"><i class="fas fa-th-large" style="font-size: "></i></button>
                         </form>
@@ -28,7 +30,9 @@
                         <form action="{{ route('button.store') }}" method="POST">
                             {{ csrf_field()  }}
                             <input type="hidden" value="{{ $id }}" name="id">
+                            <input type="hidden" value="{{ $model }}" name="model">
                             <input type="hidden" value="power" name="value">
+                            <input type="hidden" value="tv" name="type">
                             <button type="submit" class="btn"><i class="fas fa-power-off" style="font-size: 1.6rem"></i></button>
                         </form>
                         
@@ -39,7 +43,9 @@
                         <form action="{{ route('button.store') }}" method="POST">
                             {{ csrf_field()  }}
                             <input type="hidden" value="{{ $id }}"  name="id"> 
+                            <input type="hidden" value="{{ $model }}" name="model">
                             <input type="hidden" value="up" name="value">
+                            <input type="hidden" value="tv" name="type">
                             <button type="submit" style=" background: transparent; border: none;" class="text-light"><i class="fas fa-angle-up"></i></button>
                         </form>
                     </div>
@@ -47,7 +53,9 @@
                         <form action="{{ route('button.store') }}" method="POST">
                             {{ csrf_field()  }}
                             <input type="hidden" value="{{ $id }}"  name="id"> 
+                            <input type="hidden" value="{{ $model }}" name="model">
                             <input type="hidden" value="left" name="value">
+                            <input type="hidden" value="tv" name="type">
                             <button type="submit" style=" background: transparent; border: none;" class="text-light"><i class="fas fa-angle-left"></i></button>
                         </form>
                     </div>
@@ -55,7 +63,9 @@
                         <form action="{{ route('button.store') }}" method="POST">
                             {{ csrf_field()  }}
                             <input type="hidden" value="{{ $id }}"  name="id"> 
+                            <input type="hidden" value="{{ $model }}" name="model">
                             <input type="hidden" value="select" name="value">
+                            <input type="hidden" value="tv" name="type">
                             <button type="submit" style="background: transparent; border: none;" class="text-light"><i class="fas fa-circle"></i></button>
                         </form>
                     </div>
@@ -63,7 +73,9 @@
                         <form action="{{ route('button.store') }}" method="POST">
                             {{ csrf_field()  }}
                             <input type="hidden" value="{{ $id }}"  name="id"> 
+                            <input type="hidden" value="{{ $model }}" name="model">
                             <input type="hidden" value="right" name="value">
+                            <input type="hidden" value="tv" name="type">
                             <button type="submit" style=" background: transparent; border: none;" class="text-light"><i class="fas fa-angle-right"></i></button>
                         </form>
                     </div>
@@ -71,7 +83,9 @@
                         <form action="{{ route('button.store') }}" method="POST">
                             {{ csrf_field()  }}
                             <input type="hidden" value="{{ $id }}"  name="id"> 
+                            <input type="hidden" value="{{ $model }}" name="model">
                             <input type="hidden" value="down" name="value">
+                            <input type="hidden" value="tv" name="type">
                             <button type="submit" style=" background: transparent; border: none;" class="text-light"><i class="fas fa-angle-down"></i></button>
                         </form>
                     </div>
@@ -81,8 +95,10 @@
                         <form action="{{ route('button.store') }}" method="POST">
                             {{ csrf_field()  }}
                             <input type="hidden" value="{{ $id }}"  name="id"> 
+                            <input type="hidden" value="{{ $model }}" name="model">
                             <input type="hidden" value="volume" name="value">
                             <input type="hidden" value="1" name="value_2">
+                            <input type="hidden" value="tv" name="type">
                             <button type="submit" style=" background: transparent; border: none;" class="text-light"><i class="fas fa-plus"></i></button>
                         </form>
                     </div>
@@ -90,8 +106,10 @@
                         <form action="{{ route('button.store') }}" method="POST">
                             {{ csrf_field()  }}
                             <input type="hidden" value="{{ $id }}"  name="id"> 
+                            <input type="hidden" value="{{ $model }}" name="model">
                             <input type="hidden" value="channel" name="value">
                             <input type="hidden" value="1" name="value_2">
+                            <input type="hidden" value="tv" name="type">
                             <button type="submit" style=" background: transparent; border: none;" class="text-light"><i class="fas fa-plus"></i></button>
                         </form>
                     </div>
@@ -105,8 +123,10 @@
                         <form action="{{ route('button.store') }}" method="POST">
                             {{ csrf_field()  }}
                             <input type="hidden" value="{{ $id }}"  name="id"> 
+                            <input type="hidden" value="{{ $model }}" name="model">
                             <input type="hidden" value="volume" name="value">
                             <input type="hidden" value="0" name="value_2">
+                            <input type="hidden" value="tv" name="type">
                             <button type="submit" style=" background: transparent; border: none;" class="text-light"><i class="fas fa-minus"></i></button>
                         </form>
                     </div>
@@ -114,8 +134,10 @@
                         <form action="{{ route('button.store') }}" method="POST">
                             {{ csrf_field()  }}
                             <input type="hidden" value="{{ $id }}"  name="id"> 
+                            <input type="hidden" value="{{ $model }}" name="model">
                             <input type="hidden" value="channel" name="value">
                             <input type="hidden" value="0" name="value_2">
+                            <input type="hidden" value="tv" name="type">
                             <button type="submit" style=" background: transparent; border: none;" class="text-light"><i class="fas fa-minus"></i></button>
                         </form>
                     </div>

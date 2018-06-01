@@ -25,14 +25,14 @@ class makeModule extends Command
      *
      * @var string
      */
-    protected $signature = 'make:module {type : Type of module} {id? : ID of esp8266} {owner? : Module\'s owner}';
+    protected $signature = 'make:module {type : Type of module} {id? : ID of esp8266} {owner? : Module\'s owner} {--M|model=SAMSUNG : Tv model. Allowed models SAMSUNG | LG} {--C|counter= : Module counter identifier} {--D|delete : Delete a module.}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Make all files and changes to a new module. Allowed modules types: tv | ';
+    protected $description = 'Make all files and changes to a new module. Allowed modules types: node | tv';
 
     /**
      * The filesystem instance.
@@ -73,14 +73,29 @@ class makeModule extends Command
         
 
         if($this->type == "tv") {
-            $id = trim($this->argument('id'));
-            $owner = trim($this->argument('owner'));
-            
-            $name = $this->fileName($this->type);
 
-            $this->createView($name);
-            $this->insertDB($id, $owner);
-           // $this->createController($name, $id, $type);
+            if($this->option('delete')){
+                if(!is_null($this->option('counter'))){
+                    $this->deleteDB($this->option('counter'));
+                }
+                else 
+                    $this->error(' Module counter identifier was not specified! Use -C COUNTER to set your module COUNTER ');
+            }
+
+            else {
+                $id = trim($this->argument('id'));
+                $owner = trim($this->argument('owner'));
+                $name = $this->fileName($this->type);
+
+                $this->createView($name);
+                $this->insertDB($id, $owner, $this->option('model'));
+            }
+
+        }
+
+        else if($this->type == "node"){
+
+
         }
 
         else if($this->type == "delete"){
@@ -109,23 +124,33 @@ class makeModule extends Command
         }
     }
 
-    private function insertDB($id, $owner){
+    private function insertDB($id, $owner, $model){
         if($this->type == 'tv'){
             $tv = new Tv;
             $tv->count = $this->count;
             $tv->id_esp = $id;
             $tv->owner = $owner;
+            $tv->model = $model;
             $tv->save();
         }
     }
 
     // Implement to destroy all modules, not only tvs
-    private function deleteDB(){
-        for ($i=1; $i < count(Tv::all()) + 1 ; $i++) { 
-            $this->files->delete(base_path('resources/views/tv_'.$i.'.blade.php'));
-            $this->info('Deleted view tv_'.$i.'.blade.php');
+    private function deleteDB(...$args){
+        $count = count($args);
+        if(!$count){
+            for ($i=1; $i < count(Tv::all()) + 1 ; $i++) { 
+                $this->files->delete(base_path('resources/views/tv_'.$i.'.blade.php'));
+                $this->info('Deleted view tv_'.$i.'.blade.php');
+            }
+            Tv::where('count','>',0)->delete();
         }
-        Tv::where('count','>',0)->delete();
+        if($count == 1){
+            $this->files->delete(base_path('resources/views/tv_'.$args[0].'.blade.php'));
+            $this->info('Deleted view tv_'.$args[0].'.blade.php');
+            Tv::where('count','=',$args[0])->delete();
+        }
+
     }
 
     // Check if already exists a tv module with the given esp8266 id 

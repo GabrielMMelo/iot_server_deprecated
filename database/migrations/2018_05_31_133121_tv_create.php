@@ -17,6 +17,8 @@ class TvCreate extends Migration
             $table->increments('count');
             $table->tinyInteger('id_esp');
             $table->string('owner');
+            $table->string('local')->nullable();
+            $table->enum('model', ['SAMSUNG', 'LG']);
             $table->timestamps();
         });
     }
