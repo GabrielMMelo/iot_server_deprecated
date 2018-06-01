@@ -114,13 +114,22 @@ class makeModule extends Command
 
     private function createView($name) {
         if($this->type == 'tv'){
-            //$name = $this->ucName($name);
             $stub = $this->files->get(base_path('/resources/stubs/module_tv_view.stub'));
             $stub = str_replace('MODULE_NAME', $this->formatName($name), $stub);
             $filename = $name.".blade.php";
             $this->files->put(base_path('resources/views/').$filename, $stub);
             $this->info('Created view ' . $filename);
             return true;
+        }
+
+        else if($this->type == 'node'){
+            $stub = $this->files->get(base_path('/resources/stubs/module_node_view.stub'));
+            $stub = str_replace('MODULE_NAME', $this->formatName($name), $stub);
+            $filename = $name.".blade.php";
+            $this->files->put(base_path('resources/views/').$filename, $stub);
+            $this->info('Created view ' . $filename);
+            return true;
+
         }
     }
 
@@ -132,6 +141,11 @@ class makeModule extends Command
             $tv->owner = $owner;
             $tv->model = $model;
             $tv->save();
+        }
+
+        else if($this->type == 'node'){
+
+            
         }
     }
 
