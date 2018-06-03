@@ -16,8 +16,9 @@ class NodeCreate extends Migration
         Schema::create('nodes', function (Blueprint $table) {
             $table->increments('count');
             $table->tinyInteger('id_esp');
-            $table->string('local')->nullable();
-            $table->enum('disp', ['LIGHT', 'FAN']);
+            $table->string('local');
+            $table->enum('device', ['LIGHT', 'FAN']);
+            $table->boolean('status');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class NodeCreate extends Migration
      */
     public function down()
     {
-        //
+         Schema::dropIfExists('nodes');
     }
 }

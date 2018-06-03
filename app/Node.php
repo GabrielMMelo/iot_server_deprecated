@@ -10,6 +10,7 @@ class Node extends Model
 	'count',
 	'id_esp',
 	'local',
-	'disp'
+	'device',
+	'status'
     ];
 }

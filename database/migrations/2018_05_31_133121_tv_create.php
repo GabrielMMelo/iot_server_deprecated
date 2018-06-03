@@ -16,8 +16,8 @@ class TvCreate extends Migration
         Schema::create('tvs', function (Blueprint $table) {
             $table->increments('count');
             $table->tinyInteger('id_esp');
-            $table->string('owner');
-            $table->string('local')->nullable();
+            $table->string('local');
+            $table->string('owner')->nullable();
             $table->enum('model', ['SAMSUNG', 'LG']);
             $table->timestamps();
         });

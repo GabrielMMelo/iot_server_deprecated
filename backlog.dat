@@ -9,7 +9,8 @@
 - Implements correct deletes (by counter) on make:modules OK
 - Add tv model to make:module command OK
 - Criar mais um input com o tipo de evento (node, tv) nos formulários de envio OK
-
+- send scripts to js files on /public/js OK
+- Fix time on power-off timer to seconds also OK
 
 - Node = model => tipo do dispositivo (lampada, ventilador, etc), type => node
 - Ao logar, disparar um evento para enviar mensagem para os clientes para os mesmos enviarem seus status
@@ -22,7 +23,6 @@
 - Keyboard shortcuts to web applications
 - Modelar banco: table node
 - Encrypt forms
-- Fix time on power-off timer to seconds also
-- send scripts to js files on /public/js
 - send styles to css files on /public/css/
-
+- Tabela para locals
+- send message from esp by socket.io
