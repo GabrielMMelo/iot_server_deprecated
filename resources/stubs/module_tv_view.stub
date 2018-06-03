@@ -12,7 +12,7 @@
 
     <div class="row justify-content-center mt-3">
         <div class="col-6 col-lg-4 col-md-5 col-sm-6 col-8 col-4">
-            <div class="card bg-dark">
+            <div class="card bg-dark" style="box-shadow: 1px 5px 10px #333;">
                 <div class="row justify-content-center mt-1 " style="font-size: 1.5rem;">
                     
                     <!-- POWER & SOURCE -->
@@ -27,13 +27,13 @@
                         </form>
                     </div>
                     <div class="col-6 mb-4">
-                        <form action="{{ route('button.store') }}" method="POST">
+                        <form id="timer" action="{{ route('button.store') }}" method="POST">
                             {{ csrf_field()  }}
                             <input type="hidden" value="{{ $id }}" name="id">
                             <input type="hidden" value="{{ $model }}" name="model">
                             <input type="hidden" value="power" name="value">
                             <input type="hidden" value="tv" name="type">
-                            <button type="submit" class="btn"><i class="fas fa-power-off" style="font-size: 1.6rem"></i></button>
+                            <button type="submit" class="btn btn-danger text-light"><i class="fas fa-power-off" style="font-size: 1.6rem"></i></button>
                         </form>
                         
                     </div>
@@ -144,6 +144,7 @@
                 </div>
             </div>
         </div>
+        @include('partials.tv-timer')
     </div>
 @endsection
 

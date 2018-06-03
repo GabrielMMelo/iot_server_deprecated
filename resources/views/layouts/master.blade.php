@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8">
@@ -15,15 +16,17 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Sunflower:300" rel="stylesheet">        
 
         <!-- Styles -->
         @section('link')
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
         @show
 
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-@yield('nav-color','light')">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #57b846; box-shadow: 0px 1px 5px #444;">
                 
                 <div class="container">
 
@@ -40,18 +43,18 @@
                                 <ul class="navbar-nav mr-auto">
                                 @section('nav-items')
                                         <li class="nav-item mr-2">
-                                                <a class="nav-link" href="blog.html">Blog</a>
+                                                <a class="nav-link" href="blog.html">Locals</a>
                                         </li>
 
                                         <li class="nav-item mr-2">
-                                                <a class="nav-link" href="#servicos">Serviços</a>
+                                                <a class="nav-link" href="#servicos">Services</a>
                                         </li>
 
                                         <li class="nav-item mr-2">
-                                                <a class="nav-link" href="equipe.html">Equipe</a>
+                                                <a class="nav-link" href="equipe.html">About us</a>
                                         </li>
                                         <li class="nav-item mr-2">
-                                                <a class="nav-link" href="contato.html">Contato</a>
+                                                <a class="nav-link" href="contato.html">Support</a>
                                         </li>
                                 @show
                                 </ul>

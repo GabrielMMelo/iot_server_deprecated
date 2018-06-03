@@ -3,12 +3,20 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    <div class="card mt-3">
-        <span class="display-4">TVs</span>
+
+     <div class="card mt-3 bg-light" style="box-shadow:         inset 0px 0px 13px -8px rgba(50, 50, 50, 1);">
+        <span class="display-4 mt-2">Lights <i class="fas fa-lightbulb text-muted"></i></span>
+        <div class="row justify-content-center" style="font-size: 2rem;">
+        
+        </div>
+    </div>
+
+    <div class="card my-3 bg-light" style="box-shadow:         inset 0px 0px 13px -8px rgba(50, 50, 50, 0.78);">
+        <span class="display-4 mt-2">TVs <i class="fas fa-tv text-muted"></i></span>
         <div class="row justify-content-center" style="font-size: 2rem;">
         @foreach ($tvs as $tv)
-        	<div class="col-lg-4 col-md-6 col-sm-12 mb-3">		
-        		<div class="card mt-5">
+        	<div class="col-lg-4 col-md-6 col-sm-10 mb-3">		
+        		<div class="card mt-3" style="box-shadow: 1px 5px 10px #333;">
         		  <div class="card-body">
         		    <h5 class="card-title">TV {{ $tv->owner }}</h5>
         		    <a href="{{ route('tv.view', ['count' => $tv->count, 'id' => $tv->id_esp]) }}" class="btn btn-success">Acessar</a>

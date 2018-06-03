@@ -21,4 +21,8 @@
 	* Outro funcionando pequeno webserver para setagem do id & SSID + PWD
 - Keyboard shortcuts to web applications
 - Modelar banco: table node
+- Encrypt forms
+- Fix time on power-off timer to seconds also
+- send scripts to js files on /public/js
+- send styles to css files on /public/css/
 
