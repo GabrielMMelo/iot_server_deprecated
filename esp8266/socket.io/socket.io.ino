@@ -43,10 +43,24 @@ void event(const char * payload, size_t length) {
   else{
     DEBUG.println("it's not for me...");
   }
- // sendToServer();
+  delay(1000);
+  sendToServer();
 }
 
 void sendToServer(){
+
+  //webSocket.emit("esp-channel", "{\"id\":\""+ _ID +"\", \"status\":\"" + digitalRead(B1) + "\"}");
+  //char myConcatenation[100];
+  //sprintf(myConcatenation,"{\"id\":%s,\"status\":%s}",_ID,digitalRead(B1));
+  String message = "{\"id\":";
+  message.concat(_ID);
+  message.concat(",\"status\":");
+  message.concat(digitalRead(B1));
+  message.concat("}");
+  const char *url_complete = message.c_str();
+  webSocket.emit("esp-channel", url_complete);
+  //webSocket.emit("esp-channel", "{\"id\":1,\"status\":0}");
+/*
   const size_t bufferSize = JSON_ARRAY_SIZE(1) + JSON_OBJECT_SIZE(1) + JSON_OBJECT_SIZE(2) + 30;
   DynamicJsonBuffer jsonBuffer(bufferSize);
   JsonObject& root = jsonBuffer.createObject();
@@ -61,6 +75,7 @@ void sendToServer(){
   DEBUG.println(httpCode);
   String payload = http.getString();
   http.end();
+  */
 }
 
 void setup() {
@@ -89,6 +104,7 @@ void setup() {
 
     webSocket.on("button-channel:App\\\\Events\\\\Button", event);
     webSocket.begin("192.168.0.109", 3000, "/socket.io/?transport=websocket");
+    
 }
 
 void loop() {

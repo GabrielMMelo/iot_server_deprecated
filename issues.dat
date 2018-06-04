@@ -1,0 +1,10 @@
+##################
+###			   ###
+### Websockets ###
+###			   ###
+##################
+
+Rodamos um servidor REDIS para receber os eventos (botão) e os envia para o socket 
+Abrimos a porta 3000 para socket.io 
+Esp conecta ao socket (porta 3000), emit o evento "esp-channel" para o servidor que emite o broadcast do evento para os clientes
+Evento do botão

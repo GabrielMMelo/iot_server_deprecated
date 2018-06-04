@@ -19,15 +19,46 @@
                         <input type="hidden" value="light" name="type">
                         <input type="hidden" value="power" name="value">
                         <button  type="submit" class="btn">Turn On/Off</button>
-                        <span id="status-{{ $light->id_esp }}"></span>
+                        <span id="status-{{ $light->id_esp }}">1</span>
+
                         <script src="{{ asset('js/socket.io.js') }}"></script> 
                         <script>
-                           // var socket = io('http://localhost:3000');
-                            var socket = io('http://192.168.0.109:3000');
-                            socket.on("button-channel:App\\Events\\Button", function(message){
-                                // increase the power everytime we load fire route
-                                $('#status-').text(parseInt($('#power').text()) + parseInt(message.data.id));
-                            });
+                            var socket = io.connect('http://192.168.0.109:3000');
+                            //socket.on('connection',function(sock) {
+                            //console.log('made socket connection');
+                                socket.on('esp-channel', function(data){
+                                    if (data.id == '1'){
+
+                                        if (data.status == '1') {
+                                            $('#status-1').text('Ligado');
+                                        }
+
+                                        else
+                                            $('#status-1').text('Desligado');   
+                                    }
+                                    else{
+                                          $('#status-1').text('nao sei');      
+                                    }
+                                // io.sockets.emit('chat',data);
+                                    console.log(data);
+                                });
+                           // });
+                            /*
+                            socket.on("esp-channel", function(message){
+                                console.log(message);
+                                if (message.id == "1"){
+
+                                    if (message.status == "1") {
+                                        $('#status-1').text('Ligado');
+                                    }
+
+                                    else
+                                        $('#status-1').text('Desligado');   
+                                }
+                                else{
+                                      $('#status-1').text('nao sei');      
+                                }
+                            });*/
                         </script>
 
                     </form>
