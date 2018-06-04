@@ -48,40 +48,23 @@ void event(const char * payload, size_t length) {
 }
 
 void sendToServer(){
-
-  //webSocket.emit("esp-channel", "{\"id\":\""+ _ID +"\", \"status\":\"" + digitalRead(B1) + "\"}");
-  //char myConcatenation[100];
-  //sprintf(myConcatenation,"{\"id\":%s,\"status\":%s}",_ID,digitalRead(B1));
   String message = "{\"id\":";
   message.concat(_ID);
   message.concat(",\"status\":");
   message.concat(digitalRead(B1));
   message.concat("}");
-  const char *url_complete = message.c_str();
-  webSocket.emit("esp-channel", url_complete);
-  //webSocket.emit("esp-channel", "{\"id\":1,\"status\":0}");
-/*
-  const size_t bufferSize = JSON_ARRAY_SIZE(1) + JSON_OBJECT_SIZE(1) + JSON_OBJECT_SIZE(2) + 30;
-  DynamicJsonBuffer jsonBuffer(bufferSize);
-  JsonObject& root = jsonBuffer.createObject();
-  root["id"] = _ID;
-  root["teste"] = digitalRead(B1);
-  
-  HTTPClient http;
-  http.begin("http://192.168.0.109:8000/ic/public/esp/store");
-  //http.addHeader("Content-Type", "application/json");
-  http.addHeader("Content-Type", "text/html");
-  int httpCode = http.POST("{'id':1,'teste':0}");
-  DEBUG.println(httpCode);
-  String payload = http.getString();
-  http.end();
-  */
+  const char *message_complete = message.c_str();
+  webSocket.emit("esp-channel", message_complete);
+}
+
+void interrupt(){
+  sendToServer();
 }
 
 void setup() {
     pinMode(B1, OUTPUT);
     digitalWrite(B1, LOW);
-    
+    attachInterrupt(digitalPinToInterrupt(B1), interrupt, CHANGE);
     DEBUG.begin(115200);
 
     DEBUG.setDebugOutput(true);

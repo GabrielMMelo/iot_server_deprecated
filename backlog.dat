@@ -11,8 +11,10 @@
 - Criar mais um input com o tipo de evento (node, tv) nos formulários de envio OK
 - send scripts to js files on /public/js OK
 - Fix time on power-off timer to seconds also OK
+- send message from esp by socket.io OK
+- Node = model => tipo do dispositivo (lampada, ventilador, etc), type => node OK
+- Modelar banco: table node OK
 
-- Node = model => tipo do dispositivo (lampada, ventilador, etc), type => node
 - Ao logar, disparar um evento para enviar mensagem para os clientes para os mesmos enviarem seus status
 - Acrescentar modulo de luz (12V)
 - Certificate HTTPS
@@ -21,8 +23,8 @@
 	* Um de funcionamento normal
 	* Outro funcionando pequeno webserver para setagem do id & SSID + PWD
 - Keyboard shortcuts to web applications
-- Modelar banco: table node
 - Encrypt forms
 - send styles to css files on /public/css/
 - Tabela para locals
-- send message from esp by socket.io
+- ESP8266: pegar mensagem de node e alterar estado do pino
+
