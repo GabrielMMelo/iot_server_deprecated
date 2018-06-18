@@ -1,11 +1,3 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
-
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
 
 ## What's the project?
 
@@ -51,7 +43,7 @@ For example, if you need to add a new Samsung tv module on your room using an ES
 php artisan  make:module tv 3 Your_Room
 ``` 
 
-![alt text](https://github.com/GabrielMMelo/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://github.com/GabrielMMelo/iot_server/blob/esp8266/resources/docs/img/new_tv.png "New tv module created")
 
 
 If you need to delete a node module if count 2:
