@@ -27,11 +27,13 @@ Before use, you need to properly install all Laravel requirements:
 7.    Ctype PHP Extension
 8.    JSON PHP Extension
 
+You can follow my [laravel](https://github.com/GabrielMMelo/iot_server/blob/esp8266/resources/docs/pdf/Laravel.pdf) initial tutorial (PORTUGUESE LANGUAGE).
+
 After that you must clone our repo and then make sure that your favorite web server (we used apache2) is running and looking at our cloned repo in your machine.
 
 ### Creating a new module
 
-For easily create new modules and delete them to your home automation, we created artisan commands that do all changes automatically.
+For easily create new modules or delete them to your home automation, we created artisan commands that do all changes automatically. The command below must be executed in project root directory.
 
 ```
 php artisan  make:module [options] [--] <type> [<id>] [<local>] [<owner>]
@@ -44,13 +46,6 @@ php artisan  make:module tv 3 Your_Room
 ``` 
 
 ![alt text](https://github.com/GabrielMMelo/iot_server/blob/esp8266/resources/docs/img/new_tv.png "New tv module created")
-
-
-If you need to delete a node module if count 2:
-
-```
- php artisan make:module node -C 2 -D
-```
 
 Doing that, your web application create a new interface to interact with new module. Now is just add the corresponding id in your ESP8226 code like that:
 
@@ -76,5 +71,13 @@ Doing that, your web application create a new interface to interact with new mod
 #define PWD "yourPassword"
 ```
 
-Your home automation plataform is working now!
+Your home automation module is working now!
+
+### Deleting a new module
+
+If you want to delete a node module if count 2:
+
+```
+ php artisan make:module node -C 2 -D
+```
 
