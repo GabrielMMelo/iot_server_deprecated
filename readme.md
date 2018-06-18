@@ -51,6 +51,15 @@ For example, if you need to add a new Samsung tv module on your room using an ES
 php artisan  make:module tv 3 Your_Room
 ``` 
 
+![alt text](https://github.com/GabrielMMelo/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+
+
+If you need to delete a node module if count 2:
+
+```
+ php artisan make:module node -C 2 -D
+```
+
 Doing that, your web application create a new interface to interact with new module. Now is just add the corresponding id in your ESP8226 code like that:
 
 ```c++
@@ -66,7 +75,7 @@ Doing that, your web application create a new interface to interact with new mod
 
 #include "ir.hpp"
 
-#define _ID 3
+#define _ID 3 // <- change for the same created module id
 
 #define DEBUG Serial
 
