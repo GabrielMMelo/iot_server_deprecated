@@ -116,6 +116,7 @@ class makeModule extends Command
                 $name = $this->fileName($this->type);
 
             //    $this->createView($name);
+                $this->getCount();
                 $this->insertDB($id, $local, trim($this->option('device')));
             }
 
@@ -127,6 +128,14 @@ class makeModule extends Command
        
        // $this->addToDashboard($name);
 
+    }
+
+
+    private function getCount(){
+        if($this->type == "node"){
+            $query = Node::select('count')->orderBy('count', 'desc')->first();
+            $this->count = $query->count + 1;
+        }        
     }
 
     private function createView($name) {
