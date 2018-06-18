@@ -8,7 +8,7 @@ It's a modular home automation plataform that uses an web server to provide an u
 - [Laravel 5.6](https://laravel.com/);
 - [Socket.io](https://socket.io/);
 - [ESP8266-12E](https://www.espressif.com/en/products/hardware/esp8266ex/overview);
-- [ArduinoJson]();
+- [ArduinoJson](https://arduinojson.org/);
 - Apache2;
 - Raspberry pi 3 B as a server;
 - IR communication.
