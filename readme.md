@@ -1,4 +1,6 @@
 
+# IoT Server
+
 ## What's the project?
 
 It's a modular home automation plataform that uses an web server to provide an user interface and establish web-socket connections with ESP8266 modules. Through the plataform, you can control IR TVs, lights and other on/off devices.
