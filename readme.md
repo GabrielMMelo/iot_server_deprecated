@@ -15,6 +15,7 @@ It's a modular home automation plataform that uses an web server to provide an u
 - Raspberry pi 3 B as a server;
 - IR communication.
 
+
 ## How to use
 
 Before use, you need to properly install all Laravel requirements:
@@ -29,9 +30,9 @@ Before use, you need to properly install all Laravel requirements:
 7.    Ctype PHP Extension
 8.    JSON PHP Extension
 
-You can follow my [laravel](https://github.com/GabrielMMelo/iot_server/blob/esp8266/resources/docs/pdf/Laravel.pdf) initial tutorial (PORTUGUESE LANGUAGE).
+You can follow my [laravel getting started tutorial](https://github.com/GabrielMMelo/iot_server/blob/esp8266/resources/docs/pdf/Laravel.pdf) (PORTUGUESE LANGUAGE).
 
-After that you must clone our repo and then make sure that your favorite web server (we used apache2) is running and looking at our cloned repo in your machine.
+After that, you must clone our repo and then make sure that your favorite web server (we used apache2) is running and looking at our cloned repo in your machine.
 
 ### Creating a new module
 
@@ -77,7 +78,11 @@ Your home automation module is working now!
 
 ### Deleting a new module
 
-If you want to delete a node module if count 2:
+If you want to delete a node module, then you must specify it count. The module count is showed below:
+
+![alt text](https://github.com/GabrielMMelo/iot_server/blob/esp8266/resources/docs/img/module_counter.png "Module counter")
+
+So, to delete a node module with count = 2, do it:
 
 ```
  php artisan make:module node -C 2 -D
