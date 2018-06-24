@@ -2,9 +2,6 @@
 #include <IRsend.h>
 #include "IR_SAMSUNG.hpp"
 
-
-#define SamsungPower        0xE0E040BF  
-
 class Samsung {
 private:
   IRsend* irsend;

@@ -9,10 +9,11 @@
 
 #include "ir.hpp"
 
+// ESP8266 ID
 #define _ID 1
 
 #define DEBUG Serial
 
+// Your Wi-Fi network credentials
 #define SSID "Dougras"
-
 #define PWD "eusouodougrasvocenaoehodougras"

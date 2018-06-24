@@ -1,3 +1,6 @@
+/*
+* Samsung remote control mapping
+*/
 #define SamsungPower        0xE0E040BF
 #define SamsungSource        0xE0E0807F
 #define SamsungExit        0xE0E0B44B
