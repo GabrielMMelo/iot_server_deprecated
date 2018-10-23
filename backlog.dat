@@ -1,0 +1,30 @@
+- Login com auth OK
+- Arrumar navbar do master.blade.php para pegar user->name e fazer dropdown com logout OK
+- Melhorar interface
+- artisan custom commands OK 
+- Modelar BD OK
+- Script para rodar o servidor do socket.io OK
+- redirect to login on logout OK
+- fix route '/' to login OK
+- Implements correct deletes (by counter) on make:modules OK
+- Add tv model to make:module command OK
+- Criar mais um input com o tipo de evento (node, tv) nos formulários de envio OK
+- send scripts to js files on /public/js OK
+- Fix time on power-off timer to seconds also OK
+- send message from esp by socket.io OK
+- Node = model => tipo do dispositivo (lampada, ventilador, etc), type => node OK
+- Modelar banco: table node OK
+
+- Ao logar, disparar um evento para enviar mensagem para os clientes para os mesmos enviarem seus status
+- Acrescentar modulo de luz (12V)
+- Certificate HTTPS
+- Gravar o id do esp no SPIFFS
+- Dois tipos de boot no esp (fazer leitura de um pino na inicialização)
+	* Um de funcionamento normal
+	* Outro funcionando pequeno webserver para setagem do id & SSID + PWD
+- Keyboard shortcuts to web applications
+- Encrypt forms
+- send styles to css files on /public/css/
+- Tabela para locals
+- ESP8266: pegar mensagem de node e alterar estado do pino
+

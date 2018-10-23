@@ -1,0 +1,12 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class MODULE_NAMEController extends Controller {
+
+    public function view() {
+        return view('MODULE_VIEW_NAME')->with(['id' => 'MODULE_ID']);
+    }
+}
