@@ -1,0 +1,3 @@
+[submodule "ic-report"]
+	path = ic-report
+	url = https://github.com/GabrielMMelo/ic-report
