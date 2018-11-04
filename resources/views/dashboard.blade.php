@@ -3,25 +3,6 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    <script type="text/javascript">/*
-        $(document).ready(function () {
-            $('#refresh_form').on('submit', function(e) {
-                e.preventDefault();
-                $.ajax({
-                    url : $(this).attr('action'),
-                    type: $(this).attr('action'),
-                    data: $(this).serialize(),
-                    success: function (data) {
-                    
-                    },
-                    error: function (jXHR, textStatus, errorThrown) {
-                        alert(errorThrown);
-                    }
-                });
-            });
-        });
-    */
-    </script>   
      <div class="card mt-3 bg-light" style="box-shadow:         inset 0px 0px 13px -8px rgba(50, 50, 50, 1);">
         <form id="refresh_form" action="{{ route('button.store') }}" method="POST">
             {{ csrf_field()  }}    
@@ -43,36 +24,11 @@
                         <span id="status-{{ $light->id_esp }}"></span>
 
                         <script src="{{ asset('js/socket.io.js') }}"></script> 
-                        <script>
 
-                        /*
-                            Script to request call back to modules on refresh page (did i use ajax?)
-                        */
-
-                        /*
-                        var breakRefresh = localStorage['breakRefresh'] || "first";
-                        console.log(breakRefresh);
-                        if(breakRefresh !== "first"){
-                            console.log("oi");
-                            setTimeout(function(){
-                                localStorage.removeItem('breakRefresh')
-                                //breakRefresh = "first";
-                            }, 1000);
-                        }
-                        
-                        else if (breakRefresh === "first"){
-                            document.getElementById("refresh_form").submit(); 
-                            localStorage['breakRefresh'] = "second";
-                            console.log("INSIDE");
-                        }
-                        */
-                        
-                        </script>
-
+                        <!-- Inscrição no canal 'esp-channel' para receber alterações 
+                             nos estados dos periféricos                              -->
                         <script>
                             var socket = io.connect('http://192.168.0.109:3000');
-                            //socket.on('connection',function(sock) {
-                            //console.log('made socket connection');
                                 socket.on('esp-channel', function(data){
                                     if (data.id == '1'){
 
@@ -86,27 +42,9 @@
                                     else{
                                           $('#status-1').text('Unknown');      
                                     }
-                                // io.sockets.emit('chat',data);
                                     console.log(data);
                                     localStorage['breakRefresh'] = null;
                                 });
-                           // });
-                            /*
-                            socket.on("esp-channel", function(message){
-                                console.log(message);
-                                if (message.id == "1"){
-
-                                    if (message.status == "1") {
-                                        $('#status-1').text('Ligado');
-                                    }
-
-                                    else
-                                        $('#status-1').text('Desligado');   
-                                }
-                                else{
-                                      $('#status-1').text('nao sei');      
-                                }
-                            });*/
                         </script>
 
                     </form>
@@ -137,12 +75,4 @@
 @endsection
 
 @section('footer')
-    <script> /*
-       // var socket = io('http://localhost:3000');
-        var socket = io('http://192.168.0.109:3000');
-        socket.on("button-channel:App\\Events\\Button", function(message){
-            // increase the power everytime we load fire route
-            $('#power').text(parseInt($('#power').text()) + parseInt(message.data.id));
-        });*/
-    </script>
 @endsection
